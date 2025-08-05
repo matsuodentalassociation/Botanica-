@@ -1,1 +1,1251 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOTANICA - Try Magic. 本物の魔法との出会い</title>
+    <meta name="description" content="自然の力とサイエンスを融合させた本物の魔法で、あなたの暮らしに静かな感動を届けます。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===================================
+           BOTANICA Brand Site - Complete Styles
+           Phase 1 ブランドアイデンティティ適用
+           =================================== */
+
+:root {
+  /* Phase 1 カラーパレット - 修正版 */
+  --primary-botanical-green: #2D5016;
+  --primary-sage-green: #87A96B;
+  --primary-forest-deep: #1A3009;
+  --primary-earth-brown: #8B4513;
+  --primary-clay-warm: #A0522D;
+  
+  --secondary-misty-blue: #6B8CAE;
+  --secondary-crystal-blue: #B8D4E3;
+  --secondary-golden-harvest: #D4AF37;
+  --secondary-honey-glow: #F0E68C;
+  --secondary-lavender-mist: #C8A2C8;
+  --secondary-soft-purple: #DDA0DD;
+  
+  --neutral-pure-white: #FFFFFF;
+  --neutral-cream-white: #FEFEFE;
+  --neutral-warm-ivory: #FDF6E3;
+  --neutral-soft-beige: #F5F5DC;
+  --neutral-charcoal: #2F2F2F;
+  --neutral-slate-gray: #708090;
+  --neutral-light-gray: #D3D3D3;
+  --neutral-whisper-gray: #F8F8F8;
+  
+  --text-primary: #1A1A1A;
+  --text-secondary: #4A4A4A;
+  --text-muted: #8A8A8A;
+  
+  /* タイポグラフィ */
+  --font-headline: 'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif;
+  --font-body: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+  --font-accent: 'Playfair Display', 'Noto Serif JP', serif;
+  
+  /* 【フォントサイズ変数】- ここを変更すると全体に影響 */
+  --font-size-h1: clamp(2.5rem, 4vw, 3.5rem); /* 【大見出し全般のサイズ変更】 */
+  --font-size-h2: clamp(2rem, 3.5vw, 2.75rem); /* 【Try Magic等のセクションタイトルサイズ変更】 */
+  --font-size-h3: clamp(1.5rem, 2.5vw, 2rem); /* 【商品シリーズタイトルサイズ変更】 */
+  --font-size-h4: clamp(1.25rem, 2vw, 1.5rem); /* 【カードタイトルサイズ変更】 */
+  --font-size-body-large: 1.125rem; /* 【大きめの本文サイズ変更】 */
+  --font-size-body: 1rem; /* 【通常の本文サイズ変更】 */
+  
+  /* スペーシング */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  
+  --section-padding-mobile: var(--space-2xl);
+  --section-padding-desktop: var(--space-4xl);
+  
+  /* エフェクト */
+  --shadow-sm: 0 1px 3px rgba(45, 80, 22, 0.1);
+  --shadow-md: 0 4px 12px rgba(45, 80, 22, 0.15);
+  --shadow-lg: 0 8px 24px rgba(45, 80, 22, 0.2);
+  
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+  
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* ===================================
+   リセット & ベーススタイル
+   =================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  line-height: 1.6;
+  background-color: var(--neutral-pure-white);
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-md);
+  }
+}
+
+/* ===================================
+   ヘッダー（固定）
+   =================================== */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--neutral-light-gray);
+  transition: var(--transition-normal);
+}
+
+.header.scrolled {
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: var(--shadow-md);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md) var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo-image {
+  height: 40px; /* 【ロゴ画像サイズ変更】 */
+  width: auto;
+  transition: var(--transition-normal);
+}
+
+.logo-image:hover {
+  transform: scale(1.05);
+}
+
+.logo-text {
+  font-family: var(--font-accent);
+  font-size: 1.8rem; /* 【ロゴテキストサイズ変更】 */
+  font-weight: 700;
+  color: var(--primary-botanical-green); /* 【ロゴテキストカラー変更】 */
+  letter-spacing: 0.1em;
+  text-decoration: none;
+}
+
+.navigation {
+  display: flex;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: var(--space-2xl);
+}
+
+.nav-link {
+  font-size: 0.9rem; /* 【ナビゲーションリンクサイズ変更】 */
+  font-weight: 400;
+  color: var(--text-secondary); /* 【ナビゲーションリンクカラー変更】 */
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: var(--transition-normal);
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--primary-botanical-green); /* 【ナビゲーションリンクホバーカラー変更】 */
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--secondary-golden-harvest);
+  transition: var(--transition-normal);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    padding: var(--space-sm) var(--space-md);
+  }
+  
+  .logo-image {
+    height: 35px; /* 【モバイル版ロゴ画像サイズ変更】 */
+  }
+  
+  .logo-text {
+    font-size: 1.5rem; /* 【モバイル版ロゴテキストサイズ変更】 */
+  }
+  
+  .nav-list {
+    gap: var(--space-md);
+  }
+  
+  .nav-link {
+    font-size: 0.8rem; /* 【モバイル版ナビゲーションリンクサイズ変更】 */
+  }
+}
+
+/* ===================================
+   1. ファーストビュー - 【全画面背景修正】
+   =================================== */
+
+.hero {
+  position: relative;
+  width: 100vw; /* 【全画面幅に修正】 */
+  height: 100vh; /* 【全画面高さに修正】 */
+  min-height: 100vh; /* 【最小高さを100vhに設定】 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-left: calc(50% - 50vw); /* 【コンテナから飛び出して全画面に】 */
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.hero-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 【背景画像を全画面にカバー】 */
+  object-position: center; /* 【画像の中央を表示】 */
+}
+
+.hero-bg-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--neutral-warm-ivory) 0%, var(--primary-sage-green) 100%);
+  position: relative;
+}
+
+.hero-bg-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--secondary-golden-harvest) 0%, transparent 70%);
+  opacity: 0.3;
+  animation: magicGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes magicGlow {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+  100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.5; }
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 10;
+  padding: 0 var(--space-lg); /* 【コンテンツの左右余白】 */
+}
+
+.hero-title {
+  font-family: var(--font-accent);
+  margin-bottom: var(--space-2xl);
+}
+
+.hero-title-main {
+  display: block;
+  font-size: clamp(3rem, 8vw, 6rem); /* 【Botanica.メインタイトルサイズ変更】 */
+  font-weight: 700;
+  color: var(--primary-botanical-green); /* 【Botanica.メインタイトルカラー変更】 */
+  letter-spacing: 0.02em;
+  margin-bottom: var(--space-md);
+  animation: fadeInUp 1s ease-out 0.5s both;
+  position: relative;
+}
+
+.hero-title-sub {
+  display: block;
+  font-size: clamp(1.2rem, 3vw, 1.8rem); /* 【本物の魔法との出会いサブタイトルサイズ変更】 */
+  font-weight: 300;
+  color: var(--text-secondary); /* 【本物の魔法との出会いサブタイトルカラー変更】 */
+  letter-spacing: 0.1em;
+  animation: fadeInUp 1s ease-out 1s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: var(--space-2xl);
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  animation: bounce 2s infinite;
+}
+
+.scroll-arrow {
+  width: 24px;
+  height: 24px;
+  border-right: 2px solid var(--primary-botanical-green);
+  border-bottom: 2px solid var(--primary-botanical-green);
+  transform: rotate(45deg);
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-10px); }
+  60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* ===================================
+   2. ブランド紹介セクション
+   =================================== */
+
+.brand-intro {
+  padding: var(--section-padding-desktop) 0;
+  background-color: var(--neutral-whisper-gray);
+}
+
+.brand-intro-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: var(--font-accent);
+  font-size: var(--font-size-h2); /* 【Try Magicセクションタイトルサイズ変更】 */
+  font-weight: 500;
+  color: var(--primary-botanical-green); /* 【Try Magicセクションタイトルカラー変更】 */
+  margin-bottom: var(--space-2xl);
+  letter-spacing: 0.02em;
+}
+
+.brand-description {
+  font-size: var(--font-size-body-large); /* 【Try Magic説明文サイズ変更】 */
+  line-height: 1.8;
+  color: var(--text-secondary); /* 【Try Magic説明文カラー変更】 */
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+  .brand-intro {
+    padding: var(--section-padding-mobile) 0;
+  }
+}
+
+/* ===================================
+   3. 物語への招待セクション
+   =================================== */
+
+.story-invitation {
+  padding: var(--section-padding-desktop) 0;
+  background-color: var(--neutral-pure-white);
+}
+
+.invitation-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
+}
+
+.invitation-card {
+  background-color: var(--neutral-warm-ivory);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-normal);
+}
+
+.invitation-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image-actual {
+  width: 100%; /* 【カード画像幅サイズ変更】 */
+  height: auto; /* 【カード画像高さサイズ変更】 */
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  transition: var(--transition-normal);
+}
+
+.invitation-card:hover .card-image-actual {
+  transform: scale(1.05);
+}
+
+.card-image-placeholder {
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neutral-pure-white);
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.4;
+  transition: var(--transition-normal);
+}
+
+.story-placeholder {
+  background: linear-gradient(135deg, var(--primary-sage-green) 0%, var(--secondary-misty-blue) 100%);
+}
+
+.magic-placeholder {
+  background: linear-gradient(135deg, var(--primary-botanical-green) 0%, var(--primary-forest-deep) 100%);
+}
+
+.invitation-card:hover .card-image-placeholder {
+  transform: scale(1.05);
+}
+
+.card-content {
+  padding: var(--space-xl);
+  text-align: center; /* 【カード全体をセンター表示】 */
+}
+
+.card-title {
+  font-family: var(--font-accent);
+  font-size: var(--font-size-h4); /* 【THE STORY・THE MAGICカードタイトルサイズ変更】 */
+  font-weight: 500;
+  color: var(--primary-botanical-green); /* 【THE STORY・THE MAGICカードタイトルカラー変更】 */
+  margin-bottom: var(--space-md);
+  letter-spacing: 0.05em;
+  text-align: center; /* 【追加：タイトルをセンター表示】 */
+}
+
+.card-description {
+  font-size: var(--font-size-body); /* 【カード説明文サイズ変更】 */
+  line-height: 1.6;
+  color: var(--text-secondary); /* 【カード説明文カラー変更】 */
+  margin-bottom: var(--space-lg);
+}
+
+.card-button {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-sm) var(--space-lg);
+  background-color: transparent;
+  border: 1px solid var(--secondary-golden-harvest);
+  color: var(--secondary-golden-harvest); /* 【カードボタンテキストカラー変更】 */
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  border-radius: 20px;
+  transition: var(--transition-normal);
+}
+
+.card-button:hover {
+  background-color: var(--secondary-golden-harvest);
+  color: var(--neutral-pure-white); /* 【カードボタンホバーテキストカラー変更】 */
+  transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+  .story-invitation {
+    padding: var(--section-padding-mobile) 0;
+  }
+  
+  .invitation-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+  
+  .card-content {
+    padding: var(--space-lg);
+  }
+}
+
+/* ===================================
+   4. & 5. 商品シリーズセクション
+   =================================== */
+
+.product-series {
+  padding: var(--section-padding-desktop) 0;
+}
+
+.clean-series {
+  background-color: var(--neutral-whisper-gray);
+}
+
+.wellness-series {
+  background-color: var(--neutral-warm-ivory);
+}
+
+.series-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
+  align-items: center;
+}
+
+.series-content.reverse {
+  direction: rtl;
+}
+
+.series-content.reverse > * {
+  direction: ltr;
+}
+
+.series-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius-md);
+}
+
+.series-product-image {
+  width: 100%; /* 【商品画像幅サイズ変更】 */
+  height: auto; /* 【商品画像高さサイズ変更】 */
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: var(--border-radius-md);
+  transition: var(--transition-normal);
+}
+
+.series-product-image:hover {
+  transform: scale(1.02);
+}
+
+.series-image-placeholder {
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neutral-pure-white);
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.4;
+  border-radius: var(--border-radius-md);
+  transition: var(--transition-normal);
+}
+
+.clean-placeholder {
+  background: linear-gradient(135deg, var(--primary-sage-green) 0%, var(--primary-botanical-green) 100%);
+}
+
+.wellness-placeholder {
+  background: linear-gradient(135deg, var(--secondary-golden-harvest) 0%, var(--secondary-honey-glow) 100%);
+}
+
+.series-image-placeholder:hover {
+  transform: scale(1.02);
+}
+
+.placeholder-text {
+  padding: var(--space-md);
+}
+
+.series-text {
+  padding: var(--space-lg);
+}
+
+.series-title {
+  font-family: var(--font-accent);
+  font-size: var(--font-size-h3); /* 【商品シリーズタイトルサイズ変更】 */
+  font-weight: 500;
+  color: var(--primary-botanical-green); /* 【商品シリーズタイトルカラー変更】 */
+  margin-bottom: var(--space-lg);
+  letter-spacing: 0.02em;
+}
+
+.series-description {
+  font-size: var(--font-size-body-large); /* 【商品シリーズ説明文サイズ変更】 */
+  line-height: 1.8;
+  color: var(--text-secondary); /* 【商品シリーズ説明文カラー変更】 */
+  margin-bottom: var(--space-xl);
+  letter-spacing: 0.01em;
+}
+
+.series-button {
+  display: inline-block;
+  padding: var(--space-md) var(--space-xl);
+  background-color: transparent;
+  border: 2px solid var(--primary-botanical-green);
+  color: var(--primary-botanical-green); /* 【シリーズボタンテキストカラー変更】 */
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  transition: var(--transition-normal);
+  border-radius: var(--border-radius-sm);
+}
+
+.series-button:hover {
+  background-color: var(--primary-botanical-green);
+  color: var(--neutral-pure-white); /* 【シリーズボタンホバーテキストカラー変更】 */
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 768px) {
+  .product-series {
+    padding: var(--section-padding-mobile) 0;
+  }
+  
+  .series-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+  
+  .series-content.reverse {
+    direction: ltr;
+  }
+  
+  .series-text {
+    padding: var(--space-md);
+  }
+}
+
+/* ===================================
+   6. JOURNALセクション
+   =================================== */
+
+.journal-section {
+  padding: var(--section-padding-desktop) 0;
+  background-color: var(--neutral-pure-white);
+}
+
+.journal-section .section-title {
+  text-align: center;
+  margin-bottom: var(--space-4xl);
+  /* 【JOURNALセクションタイトル】.section-titleと同じ設定を継承 */
+}
+
+.journal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+  margin-bottom: var(--space-4xl);
+}
+
+.journal-card {
+  background-color: var(--neutral-warm-ivory);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  transition: var(--transition-normal);
+}
+
+.journal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.journal-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.journal-image-actual {
+  width: 100%; /* 【JOURNAL記事画像幅サイズ変更】 */
+  height: auto; /* 【JOURNAL記事画像高さサイズ変更】 */
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  transition: var(--transition-normal);
+}
+
+.journal-card:hover .journal-image-actual {
+  transform: scale(1.05);
+}
+
+.journal-image-placeholder {
+  aspect-ratio: 16/9;
+  background: linear-gradient(45deg, var(--primary-sage-green) 0%, var(--secondary-misty-blue) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neutral-pure-white);
+  font-weight: 500;
+  transition: var(--transition-normal);
+}
+
+.journal-card:hover .journal-image-placeholder {
+  transform: scale(1.05);
+}
+
+.journal-content {
+  padding: var(--space-lg);
+}
+
+.journal-date {
+  display: block;
+  font-size: 0.85rem; /* 【JOURNAL記事日付サイズ変更】 */
+  color: var(--primary-sage-green); /* 【JOURNAL記事日付カラー変更】 */
+  margin-bottom: var(--space-xs);
+  letter-spacing: 0.05em;
+}
+
+.journal-title {
+  font-size: 1.1rem; /* 【JOURNAL記事タイトルサイズ変更】 */
+  font-weight: 500;
+  color: var(--primary-botanical-green); /* 【JOURNAL記事タイトルカラー変更】 */
+  margin-bottom: var(--space-md);
+  line-height: 1.4;
+}
+
+.journal-excerpt {
+  font-size: 0.95rem; /* 【JOURNAL記事抜粋サイズ変更】 */
+  line-height: 1.6;
+  color: var(--text-secondary); /* 【JOURNAL記事抜粋カラー変更】 */
+}
+
+.journal-more {
+  text-align: center;
+}
+
+.journal-more-button {
+  display: inline-block;
+  padding: var(--space-md) var(--space-4xl);
+  background-color: transparent;
+  border: 2px solid var(--secondary-golden-harvest);
+  color: var(--secondary-golden-harvest); /* 【JOURNALもっと見るボタンテキストカラー変更】 */
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  border-radius: 25px;
+  transition: var(--transition-normal);
+}
+
+.journal-more-button:hover {
+  background-color: var(--secondary-golden-harvest);
+  color: var(--neutral-pure-white); /* 【JOURNALもっと見るボタンホバーテキストカラー変更】 */
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 768px) {
+  .journal-section {
+    padding: var(--section-padding-mobile) 0;
+  }
+  
+  .journal-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  
+  .journal-content {
+    padding: var(--space-md);
+  }
+}
+
+/* ===================================
+   7. フッター
+   =================================== */
+
+.footer {
+  background-color: var(--primary-botanical-green);
+  color: var(--neutral-pure-white);
+  padding: var(--space
+/* ===================================
+   7. フッター
+   =================================== */
+
+.footer {
+  background-color: var(--primary-botanical-green);
+  color: var(--neutral-pure-white);
+  padding: var(--space-4xl) 0 var(--space-xl);
+  position: relative;
+}
+
+.back-to-top {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.back-to-top-button {
+  background-color: var(--secondary-golden-harvest);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-normal);
+  box-shadow: var(--shadow-md);
+}
+
+.back-to-top-button:hover {
+  background-color: var(--secondary-honey-glow);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.back-to-top-arrow {
+  width: 16px;
+  height: 16px;
+  border-top: 2px solid var(--neutral-pure-white);
+  border-left: 2px solid var(--neutral-pure-white);
+  transform: rotate(45deg);
+}
+
+.footer-navigation {
+  margin-bottom: var(--space-xl);
+}
+
+.footer-nav-list {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: var(--space-2xl);
+  flex-wrap: wrap;
+}
+
+.footer-nav-link {
+  color: var(--neutral-pure-white); /* 【フッターナビゲーションリンクカラー変更】 */
+  text-decoration: none;
+  font-size: 0.9rem; /* 【フッターナビゲーションリンクサイズ変更】 */
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  transition: var(--transition-normal);
+  opacity: 0.8;
+}
+
+.footer-nav-link:hover {
+  opacity: 1;
+  color: var(--secondary-golden-harvest); /* 【フッターナビゲーションリンクホバーカラー変更】 */
+}
+
+.copyright {
+  text-align: center;
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.copyright p {
+  font-size: 0.85rem; /* 【コピーライトテキストサイズ変更】 */
+  opacity: 0.7;
+  letter-spacing: 0.05em;
+  color: var(--neutral-pure-white); /* 【コピーライトテキストカラー変更】 */
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: var(--space-2xl) 0 var(--space-lg);
+  }
+  
+  .footer-nav-list {
+    gap: var(--space-lg);
+  }
+  
+  .footer-nav-link {
+    font-size: 0.8rem; /* 【モバイル版フッターナビゲーションリンクサイズ変更】 */
+  }
+  
+  .back-to-top-button {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* ===================================
+   Try Magic. 特別効果
+   =================================== */
+
+.hero-title-main {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-title-main::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -100%;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #FFFFFF, transparent);
+  animation: magicSweep 3s ease-in-out infinite;
+}
+
+@keyframes magicSweep {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: -100%; }
+}
+
+/* ===================================
+   レスポンシブ最終調整
+   =================================== */
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: 500px;
+  }
+  
+  .hero-title-main {
+    font-size: clamp(2rem, 10vw, 3rem); /* 【モバイル版メインタイトルサイズ変更】 */
+  }
+  
+  .hero-title-sub {
+    font-size: clamp(1rem, 5vw, 1.3rem); /* 【モバイル版サブタイトルサイズ変更】 */
+  }
+}
+
+/* ===================================
+   アクセシビリティ
+   =================================== */
+
+button:focus,
+a:focus {
+  outline: 2px solid var(--secondary-golden-harvest);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <!-- ヘッダー（固定） -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <!-- ロゴ -->
+            <div class="logo">
+                <img src="https://i.imgur.com/ZZsmMln.png" alt="BOTANICA" class="logo-image">
+            
+            </div>
+            
+            <!-- ナビゲーション -->
+            <nav class="navigation">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#shop" class="nav-link">SHOP</a></li>
+                    <li class="nav-item"><a href="#story" class="nav-link">THE STORY</a></li>
+                    <li class="nav-item"><a href="#magic" class="nav-link">THE MAGIC</a></li>
+                    <li class="nav-item"><a href="#journal" class="nav-link">JOURNAL</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">ABOUT US</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- メインコンテンツ -->
+    <main class="main">
+        <!-- 1. ファーストビュー -->
+        <section class="hero" id="hero">
+            <div class="hero-background">
+                <img src="https://i.imgur.com/6naHZR8.jpeg" alt="BOTANICA Hero Background">
+            </div>
+            <div class="hero-content">
+                <h2 class="hero-title">
+                    <span class="hero-title-main">Botanica.</span>
+                    <span class="hero-title-sub">本物の魔法との出会い</span>
+                </h2>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-arrow"></div>
+            </div>
+        </section>
+
+        <!-- 2. ブランド紹介セクション -->
+        <section class="brand-intro" id="brand-intro">
+            <div class="container">
+                <div class="brand-intro-content">
+                    <h3 class="section-title">Try Magic<br>あなたが初めて使う小さな魔法。</h3>
+                    <p class="brand-description">
+                        自然の力とサイエンスを融合させた"魔法"で、あなたの暮らしに静かな感動を届けます。<br>
+                        洗う、香り、癒す——すべての瞬間に、驚きとやさしさを。<br>
+                        それは、ただのプロダクトではなく、あなたの"習慣"を変える魔法です。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 物語への招待セクション -->
+        <section class="story-invitation" id="story-invitation">
+            <div class="container">
+                <div class="invitation-content">
+                    <div class="invitation-card story-card">
+                        <div class="card-image">
+                            <img src="https://i.imgur.com/aKe7Mbb.png" alt="原っぱの風景" class="card-image-actual">
+                        </div>
+                        <div class="card-content">
+                            <h5 class="card-title">THE STORY</h5>
+                            <p class="card-description">原っぱから始まった、BOTANICAの誕生物語</p>
+                            <a href="#story" class="card-button">物語を読む</a>
+                        </div>
+                    </div>
+                    
+                    <div class="invitation-card magic-card">
+                        <div class="card-image">
+                            <img src="https://i.imgur.com/uSc69k0.jpeg" alt="トライボケミカル反応" class="card-image-actual">
+                        </div>
+                        <div class="card-content">
+                            <h5 class="card-title">THE MAGIC</h5>
+                            <p class="card-description">摩擦が魔法になる、瞬間Botanical Rinseの科学</p>
+                            <a href="#magic" class="card-button">科学を知る</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Botanica Cleanシリーズ誘導 -->
+        <section class="product-series clean-series" id="clean-series">
+            <div class="container">
+                <div class="series-content">
+                    <div class="series-image">
+                        <img src="https://i.imgur.com/PmaMM4q.png" alt="Botanica Clean Series" class="series-product-image">
+                    </div>
+                    <div class="series-text">
+                        <h4 class="series-title">Botanica Clean series</h4>
+                        <p class="series-description">
+                            摩擦を洗浄力に変える、革新的なトライボケミカル反応。<br>
+                            清掃の労力と環境負荷を劇的に削減し、真の清潔さを追求します。<br>
+                            「人と環境にやさしい」という価値で、あなたの暮らしに新しい快適さを。
+                        </p>
+                        <a href="#clean-products" class="series-button">詳しく見る</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Botanica Wellnessシリーズ誘導 -->
+        <section class="product-series wellness-series" id="wellness-series">
+            <div class="container">
+                <div class="series-content reverse">
+                    <div class="series-text">
+                        <h4 class="series-title">Botanica Wellness Line</h4>
+                        <p class="series-description">
+                            自然の恵みと科学を融合させ、日々の生活に癒しと健康を。<br>
+                            心身のゆとりをもたらす、ウェルネスラインで<br>
+                            あなたの毎日をより豊かで心地よいものに変えていきます。
+                        </p>
+                        <a href="#wellness-products" class="series-button">詳しく見る</a>
+                    </div>
+                    <div class="series-image">
+                        <img src="https://i.imgur.com/tKVNp7U.png" alt="Botanica Wellness Series" class="series-product-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. JOURNALセクション -->
+        <section class="journal-section" id="journal">
+            <div class="container">
+                <h3 class="section-title">JOURNAL</h3>
+                <div class="journal-grid">
+                    <!-- 記事1（仮コンテンツ） -->
+                    <article class="journal-card">
+                        <div class="journal-image">
+                            <!-- 記事画像1: 以下のURLをコピペしてください -->
+                            <!-- <img src="記事画像1のURL" alt="記事画像1" class="journal-image-actual"> -->
+                            <div class="journal-image-placeholder">
+                                <span class="placeholder-text">記事画像1</span>
+                            </div>
+                        </div>
+                        <div class="journal-content">
+                            <time class="journal-date">2024.12.15</time>
+                            <h6 class="journal-title">植物の力で変わる、新しい清掃体験</h6>
+                            <p class="journal-excerpt">Botanical Rinseが実現する革新的な洗浄メカニズムについて詳しく解説します。</p>
+                        </div>
+                    </article>
+                    
+                    <!-- 記事2（仮コンテンツ） -->
+                    <article class="journal-card">
+                        <div class="journal-image">
+                            <!-- 記事画像2: 以下のURLをコピペしてください -->
+                            <!-- <img src="記事画像2のURL" alt="記事画像2" class="journal-image-actual"> -->
+                            <div class="journal-image-placeholder">
+                                <span class="placeholder-text">記事画像2</span>
+                            </div>
+                        </div>
+                        <div class="journal-content">
+                            <time class="journal-date">2024.12.10</time>
+                            <h6 class="journal-title">サステナブルな暮らしを始めよう</h6>
+                            <p class="journal-excerpt">環境に配慮した製品選びが、あなたの生活と地球の未来を変えていきます。</p>
+                        </div>
+                    </article>
+                    
+                    <!-- 記事3（仮コンテンツ） -->
+                    <article class="journal-card">
+                        <div class="journal-image">
+                            <!-- 記事画像3: 以下のURLをコピペしてください -->
+                            <!-- <img src="記事画像3のURL" alt="記事画像3" class="journal-image-actual"> -->
+                            <div class="journal-image-placeholder">
+                                <span class="placeholder-text">記事画像3</span>
+                            </div>
+                        </div>
+                        <div class="journal-content">
+                            <time class="journal-date">2024.12.05</time>
+                            <h6 class="journal-title">ウェルネスライフのススメ</h6>
+                            <p class="journal-excerpt">心身の健康を大切にする、新しいライフスタイルの提案をお届けします。</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="journal-more">
+                    <a href="#all-articles" class="journal-more-button">すべての記事を見る</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 7. フッター -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <!-- 上部に戻るボタン -->
+            <div class="back-to-top">
+                <button class="back-to-top-button" onclick="scrollToTop()">
+                    <span class="back-to-top-arrow"></span>
+                </button>
+            </div>
+            
+            <!-- フッターナビゲーション -->
+            <nav class="footer-navigation">
+                <ul class="footer-nav-list">
+                    <li class="footer-nav-item"><a href="#shop" class="footer-nav-link">SHOP</a></li>
+                    <li class="footer-nav-item"><a href="#story" class="footer-nav-link">THE STORY</a></li>
+                    <li class="footer-nav-item"><a href="#magic" class="footer-nav-link">THE MAGIC</a></li>
+                    <li class="footer-nav-item"><a href="#journal" class="footer-nav-link">JOURNAL</a></li>
+                    <li class="footer-nav-item"><a href="#about" class="footer-nav-link">ABOUT US</a></li>
+                </ul>
+            </nav>
+            
+            <!-- コピーライト -->
+            <div class="copyright">
+                <p>&copy; 2024 BOTANICA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // スムーズスクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ヘッダーのスクロール効果
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // トップに戻る機能
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // スクロールインジケーターのアニメーション
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+        if (scrollIndicator) {
+            scrollIndicator.addEventListener('click', function() {
+                document.getElementById('brand-intro').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // ページロード時のアニメーション
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+        });
+
+        // スクロール時のフェードイン効果
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // 観察対象の要素を設定
+        document.querySelectorAll('.brand-intro, .product-series, .story-invitation, .journal-section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
 # Botanica-
