@@ -253,11 +253,17 @@ body {
   z-index: -1;
 }
 
-.hero-background img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 【背景画像を全画面にカバー】 */
-  object-position: center; /* 【画像の中央を表示】 */
+.hero-background video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  filter: brightness(70%);
 }
 
 .hero-bg-placeholder {
@@ -311,7 +317,7 @@ body {
   display: block;
   font-size: clamp(1.2rem, 3vw, 1.8rem); /* 【本物の魔法との出会いサブタイトルサイズ変更】 */
   font-weight: 300;
-  color: var(--text-secondary); /* 【本物の魔法との出会いサブタイトルカラー変更】 */
+  color: var(--neutral-pure-white); /* 【本物の魔法との出会いサブタイトルカラー変更】 */
   letter-spacing: 0.1em;
   animation: fadeInUp 1s ease-out 1s both;
 }
@@ -388,135 +394,7 @@ body {
 }
 
 /* ===================================
-   3. 物語への招待セクション
-   =================================== */
-
-.story-invitation {
-  padding: var(--section-padding-desktop) 0;
-  background-color: var(--neutral-pure-white);
-}
-
-.invitation-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-4xl);
-}
-
-.invitation-card {
-  background-color: var(--neutral-warm-ivory);
-  border-radius: var(--border-radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  transition: var(--transition-normal);
-}
-
-.invitation-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
-}
-
-.card-image {
-  position: relative;
-  overflow: hidden;
-}
-
-.card-image-actual {
-  width: 100%; /* 【カード画像幅サイズ変更】 */
-  height: auto; /* 【カード画像高さサイズ変更】 */
-  aspect-ratio: 16/9;
-  object-fit: cover;
-  transition: var(--transition-normal);
-}
-
-.invitation-card:hover .card-image-actual {
-  transform: scale(1.05);
-}
-
-.card-image-placeholder {
-  aspect-ratio: 16/9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--neutral-pure-white);
-  font-size: 1rem;
-  font-weight: 500;
-  text-align: center;
-  line-height: 1.4;
-  transition: var(--transition-normal);
-}
-
-.story-placeholder {
-  background: linear-gradient(135deg, var(--primary-sage-green) 0%, var(--secondary-misty-blue) 100%);
-}
-
-.magic-placeholder {
-  background: linear-gradient(135deg, var(--primary-botanical-green) 0%, var(--primary-forest-deep) 100%);
-}
-
-.invitation-card:hover .card-image-placeholder {
-  transform: scale(1.05);
-}
-
-.card-content {
-  padding: var(--space-xl);
-  text-align: center; /* 【カード全体をセンター表示】 */
-}
-
-.card-title {
-  font-family: var(--font-accent);
-  font-size: var(--font-size-h4); /* 【THE STORY・THE MAGICカードタイトルサイズ変更】 */
-  font-weight: 500;
-  color: var(--primary-botanical-green); /* 【THE STORY・THE MAGICカードタイトルカラー変更】 */
-  margin-bottom: var(--space-md);
-  letter-spacing: 0.05em;
-  text-align: center; /* 【追加：タイトルをセンター表示】 */
-}
-
-.card-description {
-  font-size: var(--font-size-body); /* 【カード説明文サイズ変更】 */
-  line-height: 1.6;
-  color: var(--text-secondary); /* 【カード説明文カラー変更】 */
-  margin-bottom: var(--space-lg);
-}
-
-.card-button {
-  display: inline-flex;
-  align-items: center;
-  padding: var(--space-sm) var(--space-lg);
-  background-color: transparent;
-  border: 1px solid var(--secondary-golden-harvest);
-  color: var(--secondary-golden-harvest); /* 【カードボタンテキストカラー変更】 */
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  border-radius: 20px;
-  transition: var(--transition-normal);
-}
-
-.card-button:hover {
-  background-color: var(--secondary-golden-harvest);
-  color: var(--neutral-pure-white); /* 【カードボタンホバーテキストカラー変更】 */
-  transform: translateX(5px);
-}
-
-@media (max-width: 768px) {
-  .story-invitation {
-    padding: var(--section-padding-mobile) 0;
-  }
-  
-  .invitation-content {
-    grid-template-columns: 1fr;
-    gap: var(--space-xl);
-  }
-  
-  .card-content {
-    padding: var(--space-lg);
-  }
-}
-
-/* ===================================
-   4. & 5. 商品シリーズセクション
+   3. & 4. 商品シリーズセクション
    =================================== */
 
 .product-series {
@@ -524,7 +402,7 @@ body {
 }
 
 .clean-series {
-  background-color: var(--neutral-whisper-gray);
+  background-color: var(--neutral-pure-white);
 }
 
 .wellness-series {
@@ -652,6 +530,139 @@ body {
   
   .series-text {
     padding: var(--space-md);
+  }
+}
+
+/* ===================================
+   5. 物語への招待セクション
+   =================================== */
+
+.story-invitation {
+  padding: var(--section-padding-desktop) 0;
+  background-color: var(--neutral-whisper-gray);
+}
+
+.invitation-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
+}
+
+.invitation-card {
+  background-color: var(--neutral-pure-white);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-normal);
+}
+
+.invitation-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image-actual {
+  width: 100%; /* 【カード画像幅サイズ変更】 */
+  height: auto; /* 【カード画像高さサイズ変更】 */
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  transition: var(--transition-normal);
+}
+
+.invitation-card:hover .card-image-actual {
+  transform: scale(1.05);
+}
+
+.card-image-placeholder {
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neutral-pure-white);
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.4;
+  transition: var(--transition-normal);
+}
+
+.story-placeholder {
+  background: linear-gradient(135deg, var(--primary-sage-green) 0%, var(--secondary-misty-blue) 100%);
+}
+
+.magic-placeholder {
+  background: linear-gradient(135deg, var(--primary-botanical-green) 0%, var(--primary-forest-deep) 100%);
+}
+
+.invitation-card:hover .card-image-placeholder {
+  transform: scale(1.05);
+}
+
+.card-content {
+  padding: var(--space-xl);
+  text-align: center; /* 【カード全体をセンター表示】 */
+}
+
+/* ===================================
+   5. 物語への招待セクション - カードタイトル修正
+   =================================== */
+
+.card-title {
+  font-family: var(--font-accent);
+  font-size: var(--font-size-h4); /* 【THE STORY・THE MAGICカードタイトルサイズ変更】 */
+  font-weight: 500;
+  color: var(--primary-botanical-green); /* 【THE STORY・THE MAGICカードタイトルカラー変更】 */
+  margin-bottom: var(--space-md);
+  letter-spacing: 0.05em;
+  text-align: center; /* 【追加：タイトルをセンター表示】 */
+}
+
+
+.card-description {
+  font-size: var(--font-size-body); /* 【カード説明文サイズ変更】 */
+  line-height: 1.6;
+  color: var(--text-secondary); /* 【カード説明文カラー変更】 */
+  margin-bottom: var(--space-lg);
+}
+
+.card-button {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-sm) var(--space-lg);
+  background-color: transparent;
+  border: 1px solid var(--secondary-golden-harvest);
+  color: var(--secondary-golden-harvest); /* 【カードボタンテキストカラー変更】 */
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  border-radius: 20px;
+  transition: var(--transition-normal);
+}
+
+.card-button:hover {
+  background-color: var(--secondary-golden-harvest);
+  color: var(--neutral-pure-white); /* 【カードボタンホバーテキストカラー変更】 */
+  transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+  .story-invitation {
+    padding: var(--section-padding-mobile) 0;
+  }
+  
+  .invitation-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+  
+  .card-content {
+    padding: var(--space-lg);
   }
 }
 
@@ -793,21 +804,13 @@ body {
 .footer {
   background-color: var(--primary-botanical-green);
   color: var(--neutral-pure-white);
-  padding: var(--space
-/* ===================================
-   7. フッター
-   =================================== */
-
-.footer {
-  background-color: var(--primary-botanical-green);
-  color: var(--neutral-pure-white);
   padding: var(--space-4xl) 0 var(--space-xl);
   position: relative;
 }
 
 .back-to-top {
   text-align: center;
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-xl); /* 【修正完了】 */
 }
 
 .back-to-top-button {
@@ -990,12 +993,15 @@ a:focus {
         <!-- 1. ファーストビュー -->
         <section class="hero" id="hero">
             <div class="hero-background">
-                <img src="https://i.imgur.com/6naHZR8.jpeg" alt="BOTANICA Hero Background">
+                <video autoplay muted loop playsinline>
+                    <source src="https://i.imgur.com/10yQozY.mp4" type="video/mp4">
+                    お使いのブラウザは video タグをサポートしていません。
+                </video>
             </div>
             <div class="hero-content">
                 <h2 class="hero-title">
                     <span class="hero-title-main">Botanica.</span>
-                    <span class="hero-title-sub">本物の魔法との出会い</span>
+                    <span class="hero-title-sub">あなたが初めて出会う魔法。</span>
                 </h2>
             </div>
             <div class="scroll-indicator">
@@ -1007,9 +1013,9 @@ a:focus {
         <section class="brand-intro" id="brand-intro">
             <div class="container">
                 <div class="brand-intro-content">
-                    <h3 class="section-title">Try Magic<br>あなたが初めて使う小さな魔法。</h3>
+                    <h3 class="section-title">Try Magic</h3>
                     <p class="brand-description">
-                        自然の力とサイエンスを融合させた"魔法"で、あなたの暮らしに静かな感動を届けます。<br>
+                        植物とサイエンスの融合が、あなたの暮らしに静かな感動を届けます。<br>
                         洗う、香り、癒す——すべての瞬間に、驚きとやさしさを。<br>
                         それは、ただのプロダクトではなく、あなたの"習慣"を変える魔法です。
                     </p>
@@ -1017,7 +1023,47 @@ a:focus {
             </div>
         </section>
 
-        <!-- 3. 物語への招待セクション -->
+        <!-- 3. Botanica Cleanシリーズ誘導 -->
+        <section class="product-series clean-series" id="clean-series">
+            <div class="container">
+                <div class="series-content">
+                    <div class="series-image">
+                        <img src="https://i.imgur.com/PmaMM4q.png" alt="Botanica Clean Series" class="series-product-image">
+                    </div>
+                    <div class="series-text">
+                        <h4 class="series-title">Botanica Clean series</h4>
+                        <p class="series-description">
+                            摩擦を洗浄力に変える、革新的なトライボケミカル反応。<br>
+                            清掃の労力と環境負荷を劇的に削減し、真の清潔さを追求します。<br>
+                            「人と環境にやさしい」という価値で、あなたの暮らしに新しい快適さを。
+                        </p>
+                        <a href="#clean-products" class="series-button">詳しく見る</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Botanica Wellnessシリーズ誘導 -->
+        <section class="product-series wellness-series" id="wellness-series">
+            <div class="container">
+                <div class="series-content reverse">
+                    <div class="series-text">
+                        <h4 class="series-title">Botanica Wellness Line</h4>
+                        <p class="series-description">
+                            自然の恵みと科学を融合させ、日々の生活に癒しと健康を。<br>
+                            心身のゆとりをもたらす、ウェルネスラインで<br>
+                            あなたの毎日をより豊かで心地よいものに変えていきます。
+                        </p>
+                        <a href="#wellness-products" class="series-button">詳しく見る</a>
+                    </div>
+                    <div class="series-image">
+                        <img src="https://i.imgur.com/tKVNp7U.png" alt="Botanica Wellness Series" class="series-product-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 物語への招待セクション -->
         <section class="story-invitation" id="story-invitation">
             <div class="container">
                 <div class="invitation-content">
@@ -1041,46 +1087,6 @@ a:focus {
                             <p class="card-description">摩擦が魔法になる、瞬間Botanical Rinseの科学</p>
                             <a href="#magic" class="card-button">科学を知る</a>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. Botanica Cleanシリーズ誘導 -->
-        <section class="product-series clean-series" id="clean-series">
-            <div class="container">
-                <div class="series-content">
-                    <div class="series-image">
-                        <img src="https://i.imgur.com/PmaMM4q.png" alt="Botanica Clean Series" class="series-product-image">
-                    </div>
-                    <div class="series-text">
-                        <h4 class="series-title">Botanica Clean series</h4>
-                        <p class="series-description">
-                            摩擦を洗浄力に変える、革新的なトライボケミカル反応。<br>
-                            清掃の労力と環境負荷を劇的に削減し、真の清潔さを追求します。<br>
-                            「人と環境にやさしい」という価値で、あなたの暮らしに新しい快適さを。
-                        </p>
-                        <a href="#clean-products" class="series-button">詳しく見る</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. Botanica Wellnessシリーズ誘導 -->
-        <section class="product-series wellness-series" id="wellness-series">
-            <div class="container">
-                <div class="series-content reverse">
-                    <div class="series-text">
-                        <h4 class="series-title">Botanica Wellness Line</h4>
-                        <p class="series-description">
-                            自然の恵みと科学を融合させ、日々の生活に癒しと健康を。<br>
-                            心身のゆとりをもたらす、ウェルネスラインで<br>
-                            あなたの毎日をより豊かで心地よいものに変えていきます。
-                        </p>
-                        <a href="#wellness-products" class="series-button">詳しく見る</a>
-                    </div>
-                    <div class="series-image">
-                        <img src="https://i.imgur.com/tKVNp7U.png" alt="Botanica Wellness Series" class="series-product-image">
                     </div>
                 </div>
             </div>
@@ -1245,7 +1251,17 @@ a:focus {
             section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(section);
         });
+
+        // 動画の読み込み確認とフォールバック
+        const video = document.querySelector('.hero-background video');
+        if (video) {
+            video.addEventListener('error', function() {
+                console.log('動画の読み込みに失敗しました');
+                // フォールバック背景を設定
+                const heroBackground = document.querySelector('.hero-background');
+                heroBackground.innerHTML = '<div class="hero-bg-placeholder"></div>';
+            });
+        }
     </script>
 </body>
 </html>
-# Botanica-
